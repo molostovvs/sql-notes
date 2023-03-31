@@ -162,10 +162,6 @@ if(expression, result_if_true, result_if_false)
 
 Например:
 
-## Test <a name="Test"></a>
-
-oaeuaoaueoauao
-
 ```sql
 select attribute1,
        attribute2,
