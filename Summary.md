@@ -1615,3 +1615,53 @@ from
 where
     date_step_end is not null and name_step = "Оплата"  
 ```
+
+## БД "Интернет-магазин книг", запросы корректировки
+
+### Использование переменных (ChatGPT)
+
+В SQL переменные используются для хранения временных значений, которые могут использоваться в запросах. Использование переменных может упростить и ускорить написание запросов, особенно если вы используете одно и то же значение несколько раз.
+
+Вот примеры, как использовать переменные в SQL:
+
+1. Объявление переменной:
+
+```sql
+DECLARE @myVariable INT;
+```
+
+2. Присвоение значения переменной:
+
+```sql
+SET @myVariable = 5;
+```
+
+3. Использование переменной в запросе:
+
+```sql
+SELECT * FROM myTable WHERE myColumn = @myVariable;
+```
+
+4. Использование переменной в условном операторе:
+
+```sql
+IF @myVariable > 10
+BEGIN
+    SELECT * FROM myTable WHERE myColumn > @myVariable;
+END
+ELSE
+BEGIN
+    SELECT * FROM myTable WHERE myColumn < @myVariable;
+END
+```
+
+5. Использование переменной в цикле:
+
+```sql
+DECLARE @i INT = 0;
+WHILE @i < 10
+BEGIN
+    SET @i = @i + 1;
+    SELECT @i;
+END
+```
