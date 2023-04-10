@@ -1763,3 +1763,34 @@ change old_attribute1 new_attribute1 type(int, varchar)
 alter table table_name1
 change old_attribute1 new_attribute1 new_type(int, varchar)
 ```
+
+### Нумерация строк
+
+Номер строки в таблице или запросе в некоторых версиях SQL можно получить с помощью оконной функции `row_number()`.
+
+Нумерацию строк также можно реализовать с помощью переменных. 
+
+Пример:
+
+Пронумеруем записи в таблице `application_order`
+
+```sql
+set @row_num := 0;
+
+select *, (@row_num := @row_num + 1) as str_num
+from applicant_order;
+```
+
+Пример:
+
+Создадим нумерацию, которая начинается заново для каждой образовательной программы. Для этого можно использовать алгоритм, в котором в переменную `@row_num` заносится 1, если `id` программы в предыдущей записи не равен `id` программы в текущей.
+
+```sql
+set @num_pr := 0;
+set @row_num := 1;
+
+
+select *,
+    if(program_id = @num_pr, @row_num := @row_num + 1, @row_num := 1) as str_num,
+    @num_pr := program_id as add_var
+```
